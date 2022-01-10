@@ -16,9 +16,10 @@
 		<ul>
 		
 			<label for="name">Id Pasajero a Eliminar:</label> 
-			<input	type="text" id="name" name="idPasajero">
+			<input	type="text" id="name" name="idPasajero"/>
+			<input type="hidden" name="idioma" value="ESP" />
 	
-			<input type="submit" value="Eliminar">
+			<input type="submit" value="Eliminar"/>
 		</ul>
 	</form>
 

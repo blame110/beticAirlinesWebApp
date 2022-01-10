@@ -42,8 +42,11 @@ public class eliminarPasajero extends HttpServlet {
 
 		// Recibimos el id de pasajero introducido en el formulario
 		String idPasajero = request.getParameter("idPasajero");
+		
+		String idioma = request.getParameter("idioma");
 
 		hOut.println("El id de pasajero recibido es: " + idPasajero);
+		hOut.println("El idioma recibido es: " + idioma);
 
 		// Comprobamos que es un número y si no lo es mostramos un mensaje
 		if (Validar.esNumero(idPasajero)) {
