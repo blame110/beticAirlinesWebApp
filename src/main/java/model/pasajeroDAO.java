@@ -306,13 +306,12 @@ public class pasajeroDAO {
 				
 			}
 			
-			if (modBussiness)
-			{
-				if (anterior) query= query + " , ";
-				else anterior=true;
+			if (anterior) query= query + " , ";
+			else anterior=true;
 	
-				query= query + " bussiness=" +pasajero.isBusiness();
-			}
+			query= query + " bussiness=" +pasajero.isBusiness();
+
+				
 			
 			query = query + " WHERE idpasajeros=? ";
 			
@@ -321,6 +320,8 @@ public class pasajeroDAO {
 			
 			pStmt.setInt(1, pasajero.getIdPasajero());
 			//Ejecutamos la query
+			
+			System.out.println("Query " +  query + "\n" + pasajero.toString());
 			numMod = pStmt.executeUpdate();
 			
 			//Si nos devuelve 1 pasajero modificado
