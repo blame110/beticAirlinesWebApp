@@ -34,11 +34,14 @@ public class ServletLogin extends HttpServlet {
 		//Recuperamos las credenciales del login
 		String usuario = request.getParameter("usuario");
 		String password = request.getParameter("password");
-		int numIntentos = Integer.parseInt(request.getParameter("numIntentos"));
+		int numIntentos=-1;
+		
+		if (request.getParameter("numIntentos")!=null)
+			numIntentos = Integer.parseInt(request.getParameter("numIntentos"));
 		
 		HttpSession sesion = request.getSession();
 		
-		
+		//Comprobamos si el usuario y la contraseña son correctas
 		if (LoginDAO.comprobarCredenciales(usuario, password))
 		{
 			//Si las credenciales estan bien mostramos los pasajeros
