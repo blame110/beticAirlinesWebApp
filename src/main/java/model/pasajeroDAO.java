@@ -321,7 +321,7 @@ public class pasajeroDAO {
 			pStmt.setInt(1, pasajero.getIdPasajero());
 			//Ejecutamos la query
 			
-			System.out.println("Query " +  query + "\n" + pasajero.toString());
+			//System.out.println("Query " +  query + "\n" + pasajero.toString());
 			numMod = pStmt.executeUpdate();
 			
 			//Si nos devuelve 1 pasajero modificado
