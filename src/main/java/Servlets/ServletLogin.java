@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
+
 import model.LoginDAO;
 
 /**
@@ -30,6 +32,7 @@ public class ServletLogin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession sesion = request.getSession();
 		
 		//Recuperamos las credenciales del login
 		String usuario = request.getParameter("usuario");
@@ -39,20 +42,18 @@ public class ServletLogin extends HttpServlet {
 		if (request.getParameter("numIntentos")!=null)
 			numIntentos = Integer.parseInt(request.getParameter("numIntentos"));
 		
-		HttpSession sesion = request.getSession();
-		
 		//Comprobamos si el usuario y la contraseña son correctas
 		if (LoginDAO.comprobarCredenciales(usuario, password))
 		{
 			//Si las credenciales estan bien mostramos los pasajeros
-			
+			sesion.setAttribute("usuario", usuario);
 			request.getRequestDispatcher("/mostrarPasajeros.jsp").forward(request, response);
 		}
 		else
 		{
 			//Si falla el login tiene un intento menos
 			numIntentos--;
-			sesion.setAttribute("numIntentos", numIntentos);
+			request.setAttribute("numIntentos", numIntentos);
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 			
 		}

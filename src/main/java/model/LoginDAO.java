@@ -21,8 +21,6 @@ public class LoginDAO {
 	public static boolean comprobarCredenciales(String usuario, String password)
 	{
 		
-		
-		
 		// Variables
 		ResultSet res;
 

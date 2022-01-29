@@ -17,21 +17,20 @@
 
 			<%
 			//Recuperamos el numintentos del servlet del objeto sesion
-			HttpSession sesion = request.getSession();
 			int numIntentos = -1;
 			
 			//Si el atributo numIntentos esta en la sesion
 			//Lo guardamos en nuestra variables
-			if (sesion.getAttribute("numIntentos")!=null)
-				numIntentos = (int)sesion.getAttribute("numIntentos");
+			if (request.getAttribute("numIntentos")!=null)
+				numIntentos = (int)request.getAttribute("numIntentos");
 			
 			//Si el servlet nos ha devuelto el número de intentos
 			//Implica que el login ha fallado
 			if (numIntentos != -1) {
 				if (numIntentos == 0)
-					out.println("<label>Espere 60 segundos antes de volver a intentarlo</label>");
+					out.println("<label>Espere 60 segundos antes de volver a intentarlo</label><br/>");
 				else
-					out.println("<label>Contraseña incorrecta, tienes " + numIntentos + " mas</label>");
+					out.println("<label>Contraseña incorrecta, tienes " + numIntentos + " mas</label><br/>");
 			}
 			else
 				//Si es la primera vez le damos tres intentos
@@ -41,7 +40,7 @@
 			<label for="fusuario">Usuario:</label> <input type="text"
 				id="fusuario" name="usuario" placeholder="Nombre Usuario..">
 
-			<label for="fpasswd">Usuario:</label> <input type="text" id="fpasswd"
+			<label for="fpasswd">Password:</label> <input type="text" id="fpasswd"
 				name="password" placeholder="Contrasenia... "> <label>¿Olvidaste
 				la contraseña?</label> <input type="submit" value="Entrar">
 				
